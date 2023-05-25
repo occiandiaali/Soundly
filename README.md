@@ -1,6 +1,10 @@
 # soundly
 
-Discover music, podcasts, sounds, and hidden gems
+Discover music, podcasts, sounds, and hidden gems  
+
+## Screenshots  
+<img src="https://github.com/occiandiaali/soundly/assets/40769994/2fc665d2-2531-4545-95a6-fdb18073ee17.jpg" height="250">
+
 
 ## Getting Started
 
