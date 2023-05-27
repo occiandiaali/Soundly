@@ -28,8 +28,19 @@ class _LayoutPageState extends State<LayoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _screens.elementAt(_selectedIndex),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [const Color(0xFFe63946), Colors.black.withOpacity(0.5)],
+              stops: const [0.0, 0.9],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              tileMode: TileMode.repeated,
+            )
+        ),
+        child: Center(
+          child: _screens.elementAt(_selectedIndex),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.deepOrange,

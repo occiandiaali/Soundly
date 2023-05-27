@@ -33,10 +33,11 @@ dependencies:
     sdk: flutter
 
   supabase_flutter:
-  riverpod:
+  flutter_riverpod:
+  state_notifier:
   simple_connection_checker:
   http:
-  audioplayers:   
+  audioplayers:
 
 
   # The following adds the Cupertino Icons font to your application.
