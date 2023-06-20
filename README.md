@@ -1,9 +1,12 @@
-# soundly
+# Soundly
 
 Discover music, podcasts, sounds, and hidden gems  
 
 ## Screenshots  
-<img src="https://github.com/occiandiaali/soundly/assets/40769994/2fc665d2-2531-4545-95a6-fdb18073ee17.jpg" height="250">
+<img src="https://github.com/occiandiaali/Soundly/assets/40769994/a128d5d0-fb18-43e9-a77c-a9a76e74056f.jpg" height="360"> 
+<img src="https://github.com/occiandiaali/Soundly/assets/40769994/0eabb938-64dd-4edb-b278-0050db1189fb.jpg" height="360"> 
+
+
 
 
 ## Getting Started
