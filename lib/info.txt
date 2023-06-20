@@ -1,1 +1,2 @@
 https://itnext.io/lets-create-a-mini-spotify-with-flutter-and-riverpod-24aa53ed8b66
+https://blog.logrocket.com/flutter-floatingactionbutton-a-complete-tutorial-with-examples/#floatingactionbutton-rules-and-principles
