@@ -32,7 +32,7 @@ class GettingStartedPage extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               child: const Text("Soundly", style: TextStyle(
-                fontSize: 24,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Cera Pro',
                 color: Colors.white,

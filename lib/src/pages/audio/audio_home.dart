@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:soundly/src/widgets/createFABExt.dart';
+
+import '../../widgets/createFAB.dart';
 
 class AudioHomePage extends StatefulWidget {
   const AudioHomePage({Key? key}) : super(key: key);
@@ -19,6 +22,13 @@ class _AudioHomePageState extends State<AudioHomePage> {
 
   final ScrollController _scrollController = ScrollController();
   bool _show = true;
+
+  bool _musicActive = true;
+  bool _podcastActive = false;
+  bool _creatorsActive = false;
+  bool _eventActive = false;
+  var _activeCatColour = Colors.white;
+  var _inactiveCatColour = Colors.grey;
 
   @override
   void initState() {
@@ -54,6 +64,8 @@ class _AudioHomePageState extends State<AudioHomePage> {
       }
     });
   }
+
+  void tapCatLabelToActive() {}
   
   List<String> imgs = [
     "assets/images/boots.webp",
@@ -126,20 +138,22 @@ class _AudioHomePageState extends State<AudioHomePage> {
                 padding: const EdgeInsets.only(left: 24.0, bottom: 18.0),
                 child: Row(
                   //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Text("Music", style: TextStyle(fontFamily: 'Cera Pro', color: Colors.white)),
-                    SizedBox(width: 12,),
-                    Text("Podcast", style: TextStyle(fontFamily: 'Cera Pro', color: Colors.grey)),
-                    SizedBox(width: 12,),
-                    Text("Event", style: TextStyle(fontFamily: 'Cera Pro', color: Colors.grey)),
-                    SizedBox(width: 12,),
-                    Text("Creators", style: TextStyle(fontFamily: 'Cera Pro', color: Colors.grey)),
+                  children: [
+                    Text("Music", style: TextStyle(fontFamily: 'Cera Pro', color: _musicActive ? _activeCatColour : _inactiveCatColour)),
+                    const SizedBox(width: 12,),
+                    Text("Podcast", style: TextStyle(fontFamily: 'Cera Pro', color: _podcastActive ? _activeCatColour : _inactiveCatColour)),
+                    const SizedBox(width: 12,),
+                    Text("Creators", style: TextStyle(fontFamily: 'Cera Pro', color: _creatorsActive ? _activeCatColour : _inactiveCatColour)),
+                    const SizedBox(width: 12,),
+                    Text("Event", style: TextStyle(fontFamily: 'Cera Pro', color: _eventActive ? _activeCatColour : _inactiveCatColour)),
+
                   ],
                 ),
               ),
               Expanded(
                 child: GridView.builder(
                   controller: _scrollController,
+                    physics: const BouncingScrollPhysics(),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       mainAxisSpacing: 0,
@@ -167,12 +181,7 @@ class _AudioHomePageState extends State<AudioHomePage> {
             ],
           ),
       ),
-      floatingActionButton: Visibility(
-        visible: _show,
-          child: FloatingActionButton.extended(
-              onPressed: () {},
-              icon: const Icon(Icons.edit_road_rounded),
-              label: const Text("Create"))),
+      floatingActionButton: _show ? createFABExt() : createFAB(),
     );
   }
 
