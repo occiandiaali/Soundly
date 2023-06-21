@@ -27,8 +27,9 @@ class _AudioHomePageState extends State<AudioHomePage> {
   bool _podcastActive = false;
   bool _creatorsActive = false;
   bool _eventActive = false;
-  var _activeCatColour = Colors.white;
-  var _inactiveCatColour = Colors.grey;
+  final _activeCatColour = Colors.white;
+  final _inactiveCatColour = Colors.grey;
+  var _renderItems = [];
 
   @override
   void initState() {
@@ -65,20 +66,55 @@ class _AudioHomePageState extends State<AudioHomePage> {
     });
   }
 
-  void tapCatLabelToActive() {}
+  void handleMusicLabelTap() {
+    setState(() {
+      _renderItems = _musicItems;
+      _podcastActive = false;
+      _musicActive = true;
+      _creatorsActive = false;
+      _eventActive = false;
+    });
+  }
+  void handlePodcastLabelTap() {
+    setState(() {
+      _renderItems = _podcastItems;
+      _podcastActive = true;
+      _musicActive = false;
+      _creatorsActive = false;
+      _eventActive = false;
+    });
+  }
+  void handleCreatorsLabelTap() {
+    setState(() {
+      _renderItems = _musicItems;
+      _podcastActive = false;
+      _musicActive = false;
+      _creatorsActive = true;
+      _eventActive = false;
+    });
+  }
+  void handleEventLabelTap() {
+    setState(() {
+      _renderItems = _podcastItems;
+      _podcastActive = false;
+      _musicActive = false;
+      _creatorsActive = false;
+      _eventActive = true;
+    });
+  }
   
-  List<String> imgs = [
-    "assets/images/boots.webp",
-    "assets/images/black-woman-face.jpeg",
-    "assets/images/female_profile.png",
-    "assets/images/male_profile.png",
-    "assets/images/boots.webp",
-    "assets/images/black-woman-face.jpeg",
-    "assets/images/female_profile.png",
-    "assets/images/male_profile.png",
+  final List<PhotoItem> _podcastItems = [
+    PhotoItem("assets/images/boots.webp",'John Doe'),
+  PhotoItem("assets/images/female_profile.png", 'Jane Doe'),
+    PhotoItem("assets/images/black-woman-face.jpeg", 'Jane Smith'),
+  PhotoItem("assets/images/male_profile.png", 'John Smith'),
+    PhotoItem("assets/images/boots.webp", 'John Doe'),
+    PhotoItem("assets/images/black-woman-face.jpeg", 'John Doe'),
+    PhotoItem("assets/images/female_profile.png", 'John Doe'),
+        PhotoItem("assets/images/male_profile.png", 'John Doe'),
   ];
 
-  final List<PhotoItem> _items = [
+  final List<PhotoItem> _musicItems = [
     PhotoItem('assets/images/male_profile.png', 'John Doe'),
     PhotoItem('assets/images/black-woman-face.jpeg', 'Jane Smith'),
     PhotoItem('assets/images/female_profile.png', 'Jane Doe'),
@@ -139,13 +175,29 @@ class _AudioHomePageState extends State<AudioHomePage> {
                 child: Row(
                   //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("Music", style: TextStyle(fontFamily: 'Cera Pro', color: _musicActive ? _activeCatColour : _inactiveCatColour)),
+                    InkWell(
+                        onTap: () {
+                          handleMusicLabelTap();
+                        },
+                        child: Text("Music", style: TextStyle(fontFamily: 'Cera Pro', color: _musicActive ? _activeCatColour : _inactiveCatColour))),
                     const SizedBox(width: 12,),
-                    Text("Podcast", style: TextStyle(fontFamily: 'Cera Pro', color: _podcastActive ? _activeCatColour : _inactiveCatColour)),
+                    InkWell(
+                      onTap: () {
+                        handlePodcastLabelTap();
+                      },
+                        child: Text("Podcast", style: TextStyle(fontFamily: 'Cera Pro', color: _podcastActive ? _activeCatColour : _inactiveCatColour))),
                     const SizedBox(width: 12,),
-                    Text("Creators", style: TextStyle(fontFamily: 'Cera Pro', color: _creatorsActive ? _activeCatColour : _inactiveCatColour)),
+                    InkWell(
+                        onTap: () {
+                          handleCreatorsLabelTap();
+                        },
+                        child: Text("Creators", style: TextStyle(fontFamily: 'Cera Pro', color: _creatorsActive ? _activeCatColour : _inactiveCatColour))),
                     const SizedBox(width: 12,),
-                    Text("Event", style: TextStyle(fontFamily: 'Cera Pro', color: _eventActive ? _activeCatColour : _inactiveCatColour)),
+                    InkWell(
+                        onTap: () {
+                          handleEventLabelTap();
+                        },
+                        child: Text("Event", style: TextStyle(fontFamily: 'Cera Pro', color: _eventActive ? _activeCatColour : _inactiveCatColour))),
 
                   ],
                 ),
@@ -159,7 +211,7 @@ class _AudioHomePageState extends State<AudioHomePage> {
                       mainAxisSpacing: 0,
                       crossAxisSpacing: 1,
                     ),
-                    itemCount: _items.length,
+                    itemCount: _renderItems.length, //_musicItems.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {},
@@ -169,7 +221,9 @@ class _AudioHomePageState extends State<AudioHomePage> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                  image: AssetImage(_items[index].image)),
+                                 // image: AssetImage(_musicItems[index].image),
+                                image: AssetImage(_renderItems[index].image),
+                              ),
 
                             ),
                           ),
@@ -177,7 +231,6 @@ class _AudioHomePageState extends State<AudioHomePage> {
                       );
                     }),
               ),
-             // const SizedBox(height: 32,)
             ],
           ),
       ),
