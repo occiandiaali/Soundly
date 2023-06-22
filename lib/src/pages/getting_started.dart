@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soundly/src/pages/audio/audio_home.dart';
-import 'package:soundly/src/pages/layout_page.dart';
-import 'package:soundly/src/widgets/build_cta_button.dart';
+import 'Home.dart';
 
 class GettingStartedPage extends StatelessWidget {
   const GettingStartedPage({Key? key}) : super(key: key);
@@ -58,7 +56,7 @@ class GettingStartedPage extends StatelessWidget {
                         Navigator.of(context)
                             .pushReplacement(
                           MaterialPageRoute(
-                              builder: (context) => const AudioHomePage())
+                              builder: (context) => const HomePage())
                         );
                       },
                       style: ButtonStyle(
