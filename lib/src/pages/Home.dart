@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:soundly/src/pages/Profile.dart';
+import 'package:soundly/src/pages/selected_player.dart';
+import 'package:soundly/src/widgets/PopOverMenu.dart';
 import 'package:soundly/src/widgets/createFABExt.dart';
 
 import '../widgets/createFAB.dart';
@@ -210,8 +212,9 @@ class _HomePageState extends State<HomePage> {
                         handleEventLabelTap();
                       },
                       child: Text("Event", style: TextStyle(fontFamily: 'Cera Pro', color: _eventActive ? _activeCatColour : _inactiveCatColour))),
-                  const SizedBox(width: 80,),
-                  const Icon(Icons.more_vert_rounded, size: 24, color: Colors.white,)
+                  const SizedBox(width: 68,),
+                 // const Icon(Icons.more_vert_rounded, size: 24, color: Colors.white,)
+                  const PopOverMenu(),
                 ],
               ),
             ),
@@ -227,7 +230,12 @@ class _HomePageState extends State<HomePage> {
                   itemCount: _renderItems.length, //_musicItems.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SelectedPlayer())
+                        );
+                      },
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Container(
@@ -247,75 +255,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: _fabVisible ? _show ? createFABExt() : createFAB() : null,
-      // drawer: Drawer(
-      //   child: ListView(
-      //     padding: EdgeInsets.zero,
-      //     children: [
-      //       UserAccountsDrawerHeader(
-      //         decoration: BoxDecoration(
-      //             gradient: LinearGradient(
-      //               colors: [const Color(0xFFe63946), Colors.black.withOpacity(0.5)],
-      //               stops: const [0.0, 0.9],
-      //               begin: Alignment.topLeft,
-      //               end: Alignment.bottomRight,
-      //               tileMode: TileMode.repeated,
-      //             )
-      //         ),
-      //         currentAccountPicture: const Icon(
-      //           Icons.face_rounded,
-      //           size: 48.0,
-      //           color: Colors.white,
-      //         ),
-      //         accountName: Text("occian9000"),
-      //         accountEmail: Text("occian@bing.ng"),),
-      //       ListTile(
-      //         leading: const Icon(Icons.account_circle_rounded),
-      //         title: const Text("Profile"),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       ListTile(
-      //         leading: const Icon(Icons.history_rounded),
-      //         title: const Text("History"),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       ListTile(
-      //         leading: const Icon(Icons.chat_bubble_outline_rounded),
-      //         title: const Text("Messages"),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       const Divider(),
-      //       ListTile(
-      //         leading: const Icon(Icons.settings),
-      //         title: const Text("Settings"),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       ListTile(
-      //         leading: const Icon(Icons.help_outline_rounded),
-      //         title: const Text("Help"),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       const Divider(),
-      //       ListTile(
-      //         leading: const Icon(Icons.logout),
-      //         title: const Text("Log Out"),
-      //         onTap: () {
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      floatingActionButton: _fabVisible ? _show ? createFABExt(context) : createFAB(context) : null,
     );
   }
 

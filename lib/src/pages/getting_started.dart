@@ -47,7 +47,7 @@ class GettingStartedPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 18,),
                   const Text(
-                    "You can create a playlist, and share with others. Or, simply discover new sounds",
+                    "Create your own sounds, or a playlist, and share with others. Easily discover, or be discovered.",
                     style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18, fontFamily: 'Cera Pro', color: Colors.white24),
                   ),
                   const SizedBox(height: 24.0,),

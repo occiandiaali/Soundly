@@ -234,7 +234,7 @@ class _AudioHomePageState extends State<AudioHomePage> {
             ],
           ),
       ),
-      floatingActionButton: _show ? createFABExt() : createFAB(),
+      //floatingActionButton: _show ? createFABExt() : createFAB(),
     );
   }
 

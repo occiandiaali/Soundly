@@ -11,18 +11,41 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [const Color(0xFFe63946), Colors.black.withOpacity(0.5)],
+              stops: const [0.0, 0.9],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              tileMode: TileMode.repeated,
+            )
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(Icons.arrow_back, size: 28,),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12.0, top: 48, bottom: 48),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
+                    Icons.arrow_back_rounded, size: 32, color: Colors.white,
+                  ),
+                ),
+              ),
             ),
-            const SizedBox(height: 24,),
-            Text("User Profile Page", style: TextStyle(fontSize: 24),),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.account_circle_rounded, size: 100,),
+                  Text("occian9000")
+                ],
+              ),
+            ),
           ],
         ),
       ),
